@@ -5,11 +5,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 
-public abstract class Item extends Iconable{
+public abstract class Item extends itemObject{
 
 	Program hostProgram;
-	protected String name;
-	protected int code;
+	
 	protected int price;
 	protected int amount;
 	protected int totalPrice;
@@ -20,7 +19,8 @@ public abstract class Item extends Iconable{
 	protected int defaultHeight;
 	
 
-	Item(Program host, JFrame hostFrame, String name, int code, int price, Point loc, Image i, int width, int height){
+	Item(Program host, JFrame hostFrame, String name, String code, int price, Point loc, Image i, int width, int height){
+	
 		this.hostProgram = host;
 		this.name = name;
 		this.code = code;
@@ -34,25 +34,13 @@ public abstract class Item extends Iconable{
 		
 		String[] temp = {""};
 		
-		this.button = new Button(new empty(host), temp, location.x, location.y, defaultWidth, defaultHeight);
+		this.button = new rightClickButton(new increment(host, this), new decrement(host,this),temp, location.x, location.y, defaultWidth, defaultHeight);
 		Iconable.setIcon(hostFrame, this.button, this.icon);
 	}
 	
-	protected final void setName(String n){
-		name = n;
-	}
 	
-	public final String getName(){
-		return name;
-	}
 	
-	protected final void setCode(int n){
-		code = n;
-	}
 	
-	public final int getCode(){
-		return code;
-	}
 	
 	protected final void setPrice(int n){
 		price = n;

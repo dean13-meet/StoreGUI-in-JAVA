@@ -3,7 +3,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import java.util.ArrayList;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -26,12 +26,18 @@ public class initialDisplay extends Display{
 	@Override
 	void init() {
 		
-		ArrayList<Item> nasaItems = new ArrayList<Item>();
+	
+		ArrayList<itemCategory> categories = new ArrayList<itemCategory>();
+		categories.add(new NasaSpaceShips(hostProgram, hostFrame, "Nasa SpaceShips", "01", new ArrayList<Item>()
+				, new Point(400,200), Iconable.loadIcon(hostProgram, "Images/NASA.jpg")));
 		
-		NasaSpaceShips nasaCat = new NasaSpaceShips(hostProgram, hostFrame, "Nasa SpaceShips", nasaItems
-				, new Point(400,200), Iconable.loadIcon(hostProgram, "Images/NASA.jpg"));
-		add(nasaCat.button);
-		
+		for(itemCategory c: categories){
+			add(c.button);
+		}
+			
+		itemCategory current = (itemCategory) categories.getCatByCode("01");
+		current.items.add(new Gemini(hostProgram, hostFrame, "Gemini", "01001", 5, new Point((int) (itemDisplay.width*0.1)*current.hostProgram.DISPLAY_WIDTH/100, (int)(itemDisplay.height*0.1)*current.hostProgram.DISPLAY_HEIGHT/100), Iconable.loadIcon(current.hostProgram, "Images/GEMINI.jpg"), (int)(itemDisplay.width*.3)*current.hostProgram.DISPLAY_WIDTH/100, (int)(itemDisplay.height*.3)*current.hostProgram.DISPLAY_HEIGHT/100));
+		current.items.add(new Apollo(hostProgram, hostFrame, "Apollo", "01002", 7, new Point((int) (itemDisplay.width*0.6)*current.hostProgram.DISPLAY_WIDTH/100, (int)(itemDisplay.height*0.1)*current.hostProgram.DISPLAY_HEIGHT/100), Iconable.loadIcon(current.hostProgram, "Images/APOLLO.jpg"), (int)(itemDisplay.width*.3)*current.hostProgram.DISPLAY_WIDTH/100, (int)(itemDisplay.height*.3)*current.hostProgram.DISPLAY_HEIGHT/100));
 		
 		/*
 		String[] cAtext = new connectToServer().getAllLinesFromFileInArray("test.txt"); cAw = 200;	cAh = 70; cAx = (width-cAw)/2; cAy = (height-cAh)/2 -50;

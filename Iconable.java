@@ -10,6 +10,8 @@ public class Iconable {
 
 	
 	
+	
+	
 	public static Image loadIcon(Program host, String location){
 		Image bIcon = null;
 		try{

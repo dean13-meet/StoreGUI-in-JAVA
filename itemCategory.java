@@ -11,19 +11,22 @@ import javax.swing.SwingConstants;
 
 
 
-public abstract class itemCategory extends Iconable{
+public class itemCategory extends itemObject{
 	Program hostProgram;
-	protected String name;
+
 	public ArrayList<Item> items;
 	public Point location;
 	protected Image icon;
 	public Button button;
 	protected final int defaultWidth = 100;
 	protected final int defaultHeight = 100;
+	
 
-	itemCategory(Program host, JFrame hostFrame, String name, ArrayList<Item> items, Point loc, Image icon){
+
+	itemCategory(Program host, JFrame hostFrame, String name, String code, ArrayList<Item> items, Point loc, Image icon){
 		this.hostProgram = host;
 		this.name = name;
+		this.code = code;
 		this.items = items;
 		this.location = loc;
 		this.icon = icon;
@@ -34,13 +37,7 @@ public abstract class itemCategory extends Iconable{
 		
 	}
 
-	protected final void setName(String n){
-		name = n;
-	}
-
-	public final String getName(){
-		return name;
-	}
+	
 
 	public final void setItems(ArrayList<Item> i){
 		items = i;
@@ -94,14 +91,15 @@ public abstract class itemCategory extends Iconable{
 
 class NasaSpaceShips extends itemCategory{
 
-	NasaSpaceShips(Program host, JFrame hostFrame, String name,
+	NasaSpaceShips(Program host, JFrame hostFrame, String name, String code,
 			ArrayList<Item> items, Point loc, Image icon) {
-		super(host, hostFrame, name, items, loc, icon);
-		
-		
-		items.add(new Gemini(hostProgram, hostFrame, "Gemini", 01001, 5, new Point((int) (itemDisplay.width*0.1)*host.DISPLAY_WIDTH/100, (int)(itemDisplay.height*0.1)*host.DISPLAY_HEIGHT/100), Iconable.loadIcon(host, "Images/GEMINI.jpg"), (int)(itemDisplay.width*.4)*host.DISPLAY_WIDTH/100, (int)(itemDisplay.height*.4)*host.DISPLAY_HEIGHT/100));
-	System.out.println(hostFrame.getHeight()*0.4);
+		super(host, hostFrame, name, code, items, loc, icon);
+		// TODO Auto-generated constructor stub
 	}
+
+
+
+	
 
 
 }

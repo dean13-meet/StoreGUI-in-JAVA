@@ -96,3 +96,37 @@ class openItemDisplay extends ButtonCommands{
 	}
 	
 }
+
+class increment extends ButtonCommands{
+
+	Item item;
+	increment(Program p, Item item) {
+		super(p);
+		this.item = item;
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	void execute(int caseNum) {
+		item.incrementAmount();
+		System.out.println("I " + item.amount);
+
+		
+	}
+	
+}
+class decrement extends ButtonCommands{
+	Item item;
+	decrement(Program p, Item item) {
+		super(p);
+		this.item = item;
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	void execute(int caseNum) {
+		item.decrementAmount();
+		System.out.println("D " + item.amount);
+		
+	}
+}
